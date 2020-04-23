@@ -16,7 +16,7 @@ import time
 
 
 
-def the_font(z = ' '): # this def  is for  the animation 
+def the_font(z = ' '): # this function  is for  the animation 
 		text = z
 		from PIL import Image, ImageDraw, ImageFont
 		import numpy as np
@@ -35,7 +35,7 @@ def letter_range(start, stop="{", step=1):# this def is for  the animation
     for ord_ in range(ord(start.lower()), ord(stop.lower()), step):
         yield chr(ord_)
 
-def time_convert(sec): # this def converts the time to the real world and makes it understandable
+def time_convert(sec): # this function converts the time to the real world and makes it understandable
   mins = sec // 60
   sec = sec % 60
   hours = mins // 60
@@ -43,7 +43,7 @@ def time_convert(sec): # this def converts the time to the real world and makes 
   print("the round is been completed in  = {0}hrs:{1}mins:{2}sec".format(int(hours),int(mins),sec))
 
 
-def start():# this def start's the thing
+def start():# this function start's the thing
 	the_font("Welcome to the")
 	the_font("tic tac toe")
 
@@ -51,7 +51,7 @@ def start():# this def start's the thing
 
 
 
-def the_rpsn_brd(): # It is the representative board for the player to understand the variable on the board
+def the_rpsn_brd(): # this function is the representative board for the player to understand the variable on the board
 	print("this is the representation of the position to the board")
 
 	print(dedent(f"""
@@ -68,7 +68,7 @@ def the_rpsn_brd(): # It is the representative board for the player to understan
 
 	
 
-def brd():# this  is the def which assigns the symbol on the board
+def brd():# this  is the function which assigns the symbol on the board
 	global a
 	global b
 	global c
@@ -106,7 +106,7 @@ g = " "
 h = " "
 i = " "
 
-def pk_pwn(): # this def ask's the player which symbol they wanna use
+def pk_pwn(): # this function ask's the player which symbol they wanna use
 	global ply_pwn
 
 	global sys_pwn
@@ -134,7 +134,7 @@ def pk_pwn(): # this def ask's the player which symbol they wanna use
 
 
 
-def placing_ply(): # This def places the player's pawn or symbol on the board
+def placing_ply(): # This function places the player's pawn or symbol on the board
 
 	global a
 	global z
@@ -203,7 +203,7 @@ def placing_ply(): # This def places the player's pawn or symbol on the board
 	placing_sys()
 
 
-def placing_sys(): # this def places the system's pawn that is symbol on the board
+def placing_sys(): # this function places the system's pawn that is symbol on the board
 
 	global a
 	global z
@@ -286,7 +286,7 @@ def placing_sys(): # this def places the system's pawn that is symbol on the boa
 
 class Evaluation(): # it has different evaluations like win and lose
 
-	def win_sit():# this def see's that the player has won or not
+	def win_sit():# this function see's that the player has won or not
 
 		global a
 		global z
@@ -332,7 +332,7 @@ class Evaluation(): # it has different evaluations like win and lose
 
 
 
-	def lose_sit():# this def see's that the player has lost or not
+	def lose_sit():# this function see's that the player has lost or not
 
 
 		global a
@@ -375,7 +375,7 @@ class Evaluation(): # it has different evaluations like win and lose
 			pass
 
 
-class draw_sit(): # this def see's that the game is draw or not
+class draw_sit(): # this function see's that the game is draw or not
 	def r1():
 		if (a== sys_pwn or a == ply_pwn ) and (z == sys_pwn or z == ply_pwn) and (c == sys_pwn or c == ply_pwn):
 
@@ -401,7 +401,7 @@ class draw_sit(): # this def see's that the game is draw or not
 
 
 
-def lvl(): # this def takes the level in which the playere want to play
+def lvl(): # this function takes the level in which the playere want to play
 
 	global range
 
@@ -424,7 +424,7 @@ def lvl(): # this def takes the level in which the playere want to play
 		print("since the given input is not recognized you are been set to easy as default")
 		range = [0,0]
 
-def lvl_stng(): # this def sets the level of the gameplay
+def lvl_stng(): # this function sets the level of the gameplay
 
 	global range 
 
@@ -441,7 +441,7 @@ def lvl_stng(): # this def sets the level of the gameplay
 
 class player():
 
-	def r1():# this decides that the player is winning on the rows to make the things easy i categorized them into r1, r2, and r3
+	def r1():# this funtion decides that the player is winning on the rows to make the things easy i categorized them into r1, r2, and r3
 
 		global a
 		global z
@@ -526,7 +526,7 @@ class player():
 		else:
 			player.c1()
 
-	def c1():# this decides that the player is winning on the columns to make the thing easy I categorized them as c1, c2, c3
+	def c1():# this function decides that the player is winning on the columns to make the thing easy I categorized them as c1, c2, c3
 
 		global a
 		global z
@@ -639,7 +639,7 @@ class player():
 			placing_sys()
 
 
-def loss():# this is what will happen if you lose
+def loss():# this the function that is what will happen if you lose
 	global end_time
 	global time_lapsed
 	
@@ -649,7 +649,7 @@ def loss():# this is what will happen if you lose
 	time_convert(time_lapsed)
 	exit(1)
 
-def win():# this is what will happen if the player wins
+def win():# this is function that will decide what will happen if the player wins
 	global end_time
 	global time_lapsed
 
@@ -659,7 +659,7 @@ def win():# this is what will happen if the player wins
 	time_convert(time_lapsed)
 	exit(1)
 
-def draw():#this is the draw animation 
+def draw():#this is the function for the draw animation 
 
 	global end_time
 	global time_lapsed
@@ -670,4 +670,4 @@ def draw():#this is the draw animation
 	time_convert(time_lapsed)
 	exit(1)
 
-start()
+start()#the game starts here
