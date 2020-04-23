@@ -1,3 +1,9 @@
+"""
+This is a script is made to remove the boredom from the life of mine and for all beginners to know how to use classes and definitions.
+This script is made in india at Hyderabad, Telangana.
+This script has the most nominal and commonly used libraries by the beginner's to make the stuff alot easy.
+
+"""
 import sys
 from colorama import init
 init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
@@ -10,7 +16,7 @@ import time
 
 
 
-def the_font(z = ' '): # this struct is for  the animation 
+def the_font(z = ' '): # this def  is for  the animation 
 		text = z
 		from PIL import Image, ImageDraw, ImageFont
 		import numpy as np
@@ -24,12 +30,12 @@ def the_font(z = ' '): # this struct is for  the animation
 		strings = chars.view('U' + str(chars.shape[1])).flatten()
 		print( "\n".join(strings))
 
-def letter_range(start, stop="{", step=1):# this struct is for  the animation
+def letter_range(start, stop="{", step=1):# this def is for  the animation
     """Yield a range of lowercase letters.""" 
     for ord_ in range(ord(start.lower()), ord(stop.lower()), step):
         yield chr(ord_)
 
-def time_convert(sec): # this struct converts the time to the real world and makes it understandable
+def time_convert(sec): # this def converts the time to the real world and makes it understandable
   mins = sec // 60
   sec = sec % 60
   hours = mins // 60
@@ -37,7 +43,7 @@ def time_convert(sec): # this struct converts the time to the real world and mak
   print("the round is been completed in  = {0}hrs:{1}mins:{2}sec".format(int(hours),int(mins),sec))
 
 
-def start():# this struct start's the thing
+def start():# this def start's the thing
 	the_font("Welcome to the")
 	the_font("tic tac toe")
 
@@ -50,19 +56,19 @@ def the_rpsn_brd(): # It is the representative board for the player to understan
 
 	print(dedent(f"""
 		
-		  \t\t\t\t      |       |       
-		  \t\t\t\t  a   |   b   |   c   
-		  \t\t\t\t______|_______|_________
-		  \t\t\t\t      |       |       
-		  \t\t\t\t  d   |   e   |   f   
-		  \t\t\t\t______|_______|_________
-		  \t\t\t\t      |       |       
-		  \t\t\t\t  g   |   h   |   i   
-		  \t\t\t\t      |       |       """))
+	                    |       |       
+	                a   |   b   |   c   
+	              ______|_______|_________
+	                    |       |       
+	                d   |   e   |   f   
+	              ______|_______|_________
+	                    |       |       
+	                g   |   h   |   i   
+	                    |       |       """))
 
 	
 
-def brd():# this  is the struct which assigns the symbol on the board
+def brd():# this  is the def which assigns the symbol on the board
 	global a
 	global b
 	global c
@@ -100,7 +106,7 @@ g = " "
 h = " "
 i = " "
 
-def pk_pwn(): # this structure ask's the player which symbol they wanna use
+def pk_pwn(): # this def ask's the player which symbol they wanna use
 	global ply_pwn
 
 	global sys_pwn
@@ -128,7 +134,7 @@ def pk_pwn(): # this structure ask's the player which symbol they wanna use
 
 
 
-def placing_ply(): # This struct places the player's pawn or symbol on the board
+def placing_ply(): # This def places the player's pawn or symbol on the board
 
 	global a
 	global z
@@ -197,7 +203,7 @@ def placing_ply(): # This struct places the player's pawn or symbol on the board
 	placing_sys()
 
 
-def placing_sys(): # this struct places the system's pawn that is symbol on the board
+def placing_sys(): # this def places the system's pawn that is symbol on the board
 
 	global a
 	global z
@@ -280,7 +286,7 @@ def placing_sys(): # this struct places the system's pawn that is symbol on the 
 
 class Evaluation(): # it has different evaluations like win and lose
 
-	def win_sit():# this struct see's that the player has won or not
+	def win_sit():# this def see's that the player has won or not
 
 		global a
 		global z
@@ -326,7 +332,7 @@ class Evaluation(): # it has different evaluations like win and lose
 
 
 
-	def lose_sit():# this struct see's that the player has lost or not
+	def lose_sit():# this def see's that the player has lost or not
 
 
 		global a
@@ -369,7 +375,7 @@ class Evaluation(): # it has different evaluations like win and lose
 			pass
 
 
-class draw_sit(): # this struct see's that the game is draw or not
+class draw_sit(): # this def see's that the game is draw or not
 	def r1():
 		if (a== sys_pwn or a == ply_pwn ) and (z == sys_pwn or z == ply_pwn) and (c == sys_pwn or c == ply_pwn):
 
@@ -395,7 +401,7 @@ class draw_sit(): # this struct see's that the game is draw or not
 
 
 
-def lvl(): # this struct takes the level in which the playere want to play
+def lvl(): # this def takes the level in which the playere want to play
 
 	global range
 
@@ -418,7 +424,7 @@ def lvl(): # this struct takes the level in which the playere want to play
 		print("since the given input is not recognized you are been set to easy as default")
 		range = [0,0]
 
-def lvl_stng(): # this struct sets the level of the gameplay
+def lvl_stng(): # this def sets the level of the gameplay
 
 	global range 
 
@@ -601,7 +607,7 @@ class player():
 		else:
 			player.d1()
 
-	def d1(): # this struct decides that if the player is winning on the diagonal the cross line
+	def d1(): # this def decides that if the player is winning on the diagonal the cross line
 
 		global a
 		global z
