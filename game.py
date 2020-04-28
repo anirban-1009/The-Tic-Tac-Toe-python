@@ -13,6 +13,9 @@ import random
 from textwrap import dedent
 from sys import exit
 import time
+import datetime
+now = datetime.datetime.now()
+
 
 
 
@@ -30,7 +33,7 @@ def the_font(z = ' '): # this function  is for  the animation
 		strings = chars.view('U' + str(chars.shape[1])).flatten()
 		print( "\n".join(strings))
 
-def letter_range(start, stop="{", step=1):# this def is for  the animation
+def letter_range(start, stop="{", step=1):# this function is for  the animation
     """Yield a range of lowercase letters.""" 
     for ord_ in range(ord(start.lower()), ord(stop.lower()), step):
         yield chr(ord_)
@@ -43,11 +46,12 @@ def time_convert(sec): # this function converts the time to the real world and m
   print("the round is been completed in  = {0}hrs:{1}mins:{2}sec".format(int(hours),int(mins),sec))
 
 
-def start():# this function start's the thing
+def start():# this function start's the game
 	the_font("Welcome to the")
 	the_font("tic tac toe")
 
 	pk_pwn()
+
 
 
 
@@ -112,7 +116,14 @@ def pk_pwn(): # this function ask's the player which symbol they wanna use
 	global sys_pwn
 
 	global start_time
-	print("What would you like to use 'X' or 'O'")
+
+	global player_id 
+
+	print("What is the player id you would like to use?")
+
+	player_id = input('>')
+
+	print(f"{player_id} What would you like to use 'X' or 'O'")
 	ply_pwn = input(">")
 	start_time = time.time()
 
@@ -150,10 +161,10 @@ def placing_ply(): # This function places the player's pawn or symbol on the boa
 
 	global sys_pwn
 
-	
+	global player_id
 
 
-	print(f"where would you like to place the {ply_pwn}")
+	print(f"{player_id} where would you like to place the {ply_pwn}")
 
 	pos = input('>')
 
@@ -200,7 +211,7 @@ def placing_ply(): # This function places the player's pawn or symbol on the boa
 	Evaluation.win_sit()
 	Evaluation.lose_sit()
 	draw_sit.r1()
-	placing_sys()
+	lvl_stng()
 
 
 def placing_sys(): # this function places the system's pawn that is symbol on the board
@@ -221,6 +232,7 @@ def placing_sys(): # this function places the system's pawn that is symbol on th
 	
 
 	place = ["a" ,"b" ,"c" ,"d" ,"e" ,"f" ,"g" ,"h" ,"i"]
+
 
 	b = random.randint(0,8)
 
@@ -284,7 +296,7 @@ def placing_sys(): # this function places the system's pawn that is symbol on th
 	placing_ply()
 
 
-class Evaluation(): # it has different evaluations like win and lose
+class Evaluation(): # this is Evaluation situation Class has two different evaluations win and lose
 
 	def win_sit():# this function see's that the player has won or not
 
@@ -404,8 +416,9 @@ class draw_sit(): # this function see's that the game is draw or not
 def lvl(): # this function takes the level in which the playere want to play
 
 	global range
+	global lvl
 
-	print("Enter the level in which you want to play ( easy, medium and hard)")
+	print("Enter the level in which you want to play (easy, medium and hard)")
 	lvl = input('>')
 
 	if lvl == "easy":
@@ -428,18 +441,17 @@ def lvl_stng(): # this function sets the level of the gameplay
 
 	global range 
 
-	b= random.randint(0,1)
+	b = random.randint(0,1)
 
 	lvl = range[b]
 
-	if lvl == 0:
-		placing_sys()
-
-	else:
-
+	if lvl == 1:
 		player.r1()
 
-class player():
+	else:
+		placing_sys()
+
+class player():# the reson to call this Class as player is because this is the best player of the system which will try to not loss at the most vulnerable situations but the profit is that it will not try to will either the win is the at most the random situation
 
 	def r1():# this funtion decides that the player is winning on the rows to make the things easy i categorized them into r1, r2, and r3
 
@@ -453,23 +465,27 @@ class player():
 		global h
 		global i
 
-		if a == z == ply_pwn:
+		if a == z == ply_pwn and c != sys_pwn and c != ply_pwn:
 
 			c = sys_pwn
 
 			brd()
 
-		elif d == e == ply_pwn:
+		elif d == e == ply_pwn and f != sys_pwn and f != ply_pwn:
 			f = sys_pwn
 			brd()
 
-		elif g == h == ply_pwn:
+		elif g == h == ply_pwn and i != sys_pwn and i != ply_pwn:
 
 			i = sys_pwn
 			brd()
 
 		else:
 			player.r2()
+		Evaluation.win_sit()
+		Evaluation.lose_sit()
+		draw_sit.r1()
+		placing_ply()
 
 	def r2():
 
@@ -483,20 +499,24 @@ class player():
 		global h
 		global i
 
-		if  z == c == ply_pwn:
+		if  z == c == ply_pwn and a != sys_pwn and a != ply_pwn:
 			a = sys_pwn
 			brd()
 
-		elif e == f == ply_pwn:
+		elif e == f == ply_pwn and d != sys_pwn and d != ply_pwn:
 			d = sys_pwn
 			brd()
 
-		elif h == i == ply_pwn:
+		elif h == i == ply_pwn and g != sys_pwn and g != ply_pwn:
 			g = sys_pwn
 			brd()
 
 		else:
 			player.r3()
+		Evaluation.win_sit()
+		Evaluation.lose_sit()
+		draw_sit.r1()
+		placing_ply()
 
 
 	def r3():
@@ -511,20 +531,24 @@ class player():
 		global h
 		global i
 
-		if a == c == ply_pwn:
-			z = ply_pwn
+		if a == c == ply_pwn and z != sys_pwn and z != ply_pwn:
+			z = sys_pwn
 			brd()
 
-		elif d == f == ply_pwn:
-			e = ply_pwn
+		elif d == f == ply_pwn and e != sys_pwn and e != ply_pwn:
+			e = sys_pwn
 			brd()
 
-		elif g == i == ply_pwn:
-			h = ply_pwn
+		elif g == i == ply_pwn and h != sys_pwn and h != ply_pwn:
+			h = sys_pwn
 			brd()
 
 		else:
 			player.c1()
+		Evaluation.win_sit()
+		Evaluation.lose_sit()
+		draw_sit.r1()
+		placing_ply()
 
 	def c1():# this function decides that the player is winning on the columns to make the thing easy I categorized them as c1, c2, c3
 
@@ -538,20 +562,26 @@ class player():
 		global h
 		global i
 
-		if a == d ==ply_pwn:
-			g = ply_pwn
+		if a == d ==ply_pwn and g != sys_pwn and g != ply_pwn:
+			g = sys_pwn
 			brd()
 
-		elif z == e == ply_pwn:
-			h = ply_pwn
+		elif z == e == ply_pwn and h != sys_pwn and h != ply_pwn:
+			h = sys_pwn
 			brd()
 
-		elif c == f == ply_pwn:
-			i = ply_pwn
+		elif c == f == ply_pwn and i != sys_pwn and i != ply_pwn:
+			i = sys_pwn
 			brd()
 
 		else:
 			player.c2()
+			
+		Evaluation.win_sit()
+		Evaluation.lose_sit()
+		draw_sit.r1()
+
+		placing_ply()
 
 	def c2():
 
@@ -565,20 +595,24 @@ class player():
 		global h
 		global i
 
-		if g == d == ply_pwn:
+		if g == d == ply_pwn and a != sys_pwn and a != ply_pwn:
 			a = sys_pwn
 			brd()
 
-		elif h == e == ply_pwn:
+		elif h == e == ply_pwn and z != sys_pwn and z != ply_pwn:
 			z = sys_pwn
 			brd()
 
-		elif f == i == ply_pwn:
+		elif f == i == ply_pwn and c != sys_pwn and c != ply_pwn:
 			c = sys_pwn
 			brd()
 
 		else:
 			player.c3()
+		Evaluation.win_sit()
+		Evaluation.lose_sit()
+		draw_sit.r1()
+		placing_ply()
 
 	def c3():
 
@@ -592,20 +626,24 @@ class player():
 		global h
 		global i
 
-		if a == g == ply_pwn:
+		if a == g == ply_pwn and d != sys_pwn and d != ply_pwn:
 			d = sys_pwn
 			brd()
 
-		elif z == h == ply_pwn:
+		elif z == h == ply_pwn and e != sys_pwn and e != ply_pwn:
 			e = sys_pwn
 			brd()
 
-		elif c == i ==ply_pwn:
+		elif c == i ==ply_pwn and f != sys_pwn and f != ply_pwn:
 			f = sys_pwn
 			brd()
 
 		else:
 			player.d1()
+		Evaluation.win_sit()
+		Evaluation.lose_sit()
+		draw_sit.r1()
+		placing_ply()
 
 	def d1(): # this def decides that if the player is winning on the diagonal the cross line
 
@@ -619,55 +657,93 @@ class player():
 		global h
 		global i
 
-		if a == e == ply_pwn:
+		if a == e == ply_pwn and i != sys_pwn and i != ply_pwn:
 			i = sys_pwn
 			brd()
 
-		elif i == e == ply_pwn:
+		elif i == e == ply_pwn and a != sys_pwn and a != ply_pwn:
 			a = sys_pwn
 			brd()
 
-		elif g == e == ply_pwn:
+		elif g == e == ply_pwn and c != sys_pwn and c != ply_pwn:
 			c = sys_pwn
 			brd()
 
-		elif e == c == ply_pwn:
+		elif e == c == ply_pwn and g != sys_pwn and g != ply_pwn:
 			g = sys_pwn
 			brd()
 
 		else:
 			placing_sys()
+		Evaluation.win_sit()
+		Evaluation.lose_sit()
+		draw_sit.r1()
+		placing_ply()
 
 
 def loss():# this the function that is what will happen if you lose
 	global end_time
+	global result
 	global time_lapsed
+	global t_c
 	
 	the_font("sorry you lost :(")
 	end_time = time.time()
 	time_lapsed = end_time - start_time
 	time_convert(time_lapsed)
+	result = 'lost'
+	record()
 	exit(1)
 
 def win():# this is function that will decide what will happen if the player wins
 	global end_time
 	global time_lapsed
+	global result
 
 	the_font("You Won!")
 	end_time = time.time()
 	time_lapsed = end_time - start_time
 	time_convert(time_lapsed)
+	result = 'won'
+	record()
 	exit(1)
 
 def draw():#this is the function for the draw animation 
 
 	global end_time
 	global time_lapsed
+	global result
 
 	the_font("Draw!")
 	end_time = time.time()
 	time_lapsed = end_time - start_time
 	time_convert(time_lapsed)
+	result = 'a draw'
+	record()
 	exit(1)
+
+def record():
+
+	global player_id
+	global sit
+	global time_lapsed
+	global result
+	global lvl
+
+
+	target = open("record.txt", 'a')
+
+	target.write(now.strftime("%Y-%m-%d %H:%M:%S"))
+	target.write("\n")
+	target.write("{}".format(player_id))
+	target.write("\n")
+	target.write("The game was been completed at the {}".format(lvl))
+	target.write("\n")
+	target.write("The player had {}".format(result))
+	target.write("\n")
+	target.write("...............................................")
+
+
+	target.close()
 
 start()#the game starts here
