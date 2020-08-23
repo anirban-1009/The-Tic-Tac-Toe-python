@@ -1,17 +1,2 @@
-The things needed for this script to run are python installed and python librabraries included are
-
->colorama
-Version: 0.4.1
-Summary: Cross-platform colored terminal text
-https://pypi.org/project/colorama/
-
-
->termcolor
-Version: 1.1.0
-Summary: ANSII Color formatting for output in terminal.
-https://pypi.org/project/termcolor/
-
->pyfiglet
-Version: 0.8.post1
-Summary: Pure-python FIGlet implementation
-https://pypi.org/project/pyfiglet/
+colorama=="0.4.1"
+pyfiglet=="0.8.post1"
